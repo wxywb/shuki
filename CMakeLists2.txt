@@ -1,0 +1,29 @@
+project(gameEngine)
+message(gameEngine)
+#set(CURRENT_BUILD_TYPE DEBUG)
+#message(${CMAKE_BUILD_TYPE})
+include_directories(${CMAKE_SOURCE_DIR}/include)
+include_directories(${CMAKE_SOURCE_DIR}/include/ImageMagick-6)
+link_directories(${CMAKE_SOURCE_DIR}/lib)
+set(MAIN_SRC_FILE ./src/main.cpp)
+add_executable(exec ${MAIN_SRC_FILE})
+
+add_custom_command(TARGET exec
+                 COMMAND echo "why fuck me")
+# add_custom_command(TARGET exec POST_BUILD        # Adds a post-build event to MyTest
+#     COMMAND ${CMAKE_COMMAND} -E copy_if_different  # which executes "cmake - E copy_if_different..."
+#         "${PROJECT_SOURCE_DIR}/libs/test.dll"      # <--this is in-file
+#         $<TARGET_FILE_DIR:MyTest>)         
+
+target_link_libraries(exec freeglut)
+target_link_libraries(exec glew32)
+target_link_libraries(exec assimp)
+
+option(USE_32BITS "Compile for 32bits processors(linux only)" ON)
+
+#message(${CMAKE_BUILD_TYPE})
+if(CMAKE_BUILD_TYPE STREQUAL "Release")
+    target_link_libraries(exec CORE_RL_Magick++_)
+else()
+    target_link_libraries(exec CORE_DB_Magick++_)
+endif()
