@@ -43,6 +43,8 @@ class ShaderManger {
     
     void use();
 
+    GLuint getprogram();
+
   private:
 
     std::string 					dir;

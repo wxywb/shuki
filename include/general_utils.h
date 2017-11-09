@@ -6,13 +6,23 @@
 #ifndef GENERAL_UTILS
 #define GENERAL_UTILS
 
-void static LOG_MESS(char *message) {
+
+
+
+#define LOG(m) LOG_MESS(m)
+#define GLCheckError() (glGetError() == GL_NO_ERROR)
+#define SAFE_DELETE(p) if (p) { delete p; p = NULL; }
+#define ARRAY_SIZE_IN_ELEMENTS(a) (sizeof(a)/sizeof(a[0]))
+
+
+void static 
+LOG_MESS(char *message) {
 	std::cout << message << std::endl;
 }
-#define LOG(m) LOG_MESS(m)
 
-bool static ReadFile(std::string filename,std::string&content ) {
-using namespace std;
+
+bool 
+static ReadFile(std::string filename,std::string&content ) {
 	std::ifstream in(filename);
 	std::string buffer;
 	if (!in.is_open()) {
@@ -25,7 +35,7 @@ using namespace std;
 		content += '\n';
 	}
 	return true;
-
 }
+
 
 #endif
