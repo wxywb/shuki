@@ -1,0 +1,5 @@
+D:/shit/shuki/build/CMakeFiles/libshuki.dir
+D:/shit/shuki/build/CMakeFiles/ALL_BUILD.dir
+D:/shit/shuki/build/CMakeFiles/ZERO_CHECK.dir
+D:/shit/shuki/build/example/CMakeFiles/example.dir
+D:/shit/shuki/build/example/CMakeFiles/ALL_BUILD.dir

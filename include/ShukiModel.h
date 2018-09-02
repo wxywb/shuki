@@ -10,16 +10,13 @@
 #ifndef SHUKI_MODEL
 #define SHUKI_MODEL
 
-
-
-
-
 namespace shuki 
 {
 	
 #define POSITION_LOCATION 0
 #define TEX_COORD_LOCATION 1
 #define NORMAL_LOCATION 2
+#define TANGENT_LOCATION 3
 #define INVALID_MATERIAL 0xFFFFFFFF
 
 struct Mesh {
@@ -56,7 +53,7 @@ class _ModelChunk
 #define BUFFER_NORMAL       2
 #define BUFFER_TEXCORD      3
 #define BUFFER_WVP_mat      4
-#define BUFFER_WORLD_MAT    5
+#define BUFFER_TANGENT      5
 
 class Model {
   public:
@@ -70,11 +67,14 @@ class Model {
         std::vector<Vector3f> &positions,
         std::vector<Vector3f> &normals,
         std::vector<Vector2f> &texd_uvs,
-        std::vector<unsigned int> &indices);
+        std::vector<unsigned int> &indices,
+        std::vector<Vector3f> &tangents);
 
     bool InitMaterials(const aiScene * pScene, const std::string & Filename);
 
     void Render();
+
+    void RenderwithoutTexture();
    
 
 
@@ -85,7 +85,9 @@ class Model {
     std::string filename;
 
     std::vector<Mesh> m_meshes;
-    std::vector<Texture*> m_textures;
+    std::vector<Texture*> m_diffuse_textures;
+    std::vector<Texture*> m_normal_textures;
+ //   std::vector<Texture >
 
   };
 

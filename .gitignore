@@ -1,0 +1,7 @@
+# Ignore build directory
+/bin
+/libshuki.dir
+/Win32
+*.shit
+
+

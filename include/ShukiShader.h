@@ -45,6 +45,8 @@ class ShaderManger {
 
     GLuint getprogram();
 
+    GLuint get_uniform_loc(std::string str);
+
   private:
 
     std::string 					dir;

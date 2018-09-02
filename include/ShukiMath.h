@@ -1,5 +1,3 @@
-//#pragma once
-
 #ifndef SHUKIMATH_H
 #define SHUKIMATH_H
 
@@ -69,18 +67,23 @@ typedef ivec2   Vector2i;
 
 namespace vmath {
     static inline mat4  perspective_red(float width, float height, float near, float far)
-    {
-        float q = near / (width / 2);
-        float A = near / (height / 2);
+    {   
+        float q =  -near / (width / 2);
+        float A =  -near / (height / 2);
         float B = - (far + near) / (far - near);
-        float C = 2 * far * near / (far - near);
+        float C = (2 * far * near) / (far - near);
 
         mat4 result;
 
-        result[0] = vec4(q, 0.0f, 0.0f, 0.0f);
+    /*    result[0] = vec4(q, 0.0f, 0.0f, 0.0f);
         result[1] = vec4(0.0f, A, 0.0f, 0.0f);
         result[2] = vec4(0.0f, 0.0f, B, C);
-        result[3] = vec4(0.0f, 0.0f, 1.0f, 0.0f);
+        result[3] = vec4(0.0f, 0.0f, -1.0f, 0.0f);*/
+        result[0] = vec4(q,  0.0f,       0.0f,   0.0f);
+        result[1] = vec4(0.0f,  A,       0.0f,   0.0f);
+        result[2] = vec4(0.0f,  0.0f,       B,   C);
+        result[3] = vec4(0.0f,  0.0f,   -1.0f,   0.0f); 
+
         return result;
     }
 }
